@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 readme = open('README.md').read()
 
 setup(
-    name='House Watchdog'
+    name='House Watchdog',
     version='0.1.0',
     description=("Check whether houses are up/down"),
     long_description=readme,
@@ -17,7 +17,12 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
+        'paho-mqtt>=1.0',
+        'paramiko>=1.15.2'
     ],
+    entry_points = {
+        'console_scripts': ['house_watchdog=house_watchdog.watchdog:main'],
+    },
     license='Copyright',
     zip_safe=True,  # To be verified
     classifiers=[
